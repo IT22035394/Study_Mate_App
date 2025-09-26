@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="inputStudentID" type="id">inputStudentID</item>
+    <item name="inputPassword" type="id">inputPassword</item>
+    <item name="btnLogin" type="id">btnLogin</item>
+    <item name="txtSignUp" type="id">txtSignUp</item>
+    <item name="ivNotification" type="id">ivNotification</item>
+    <item name="ivProfile" type="id">ivProfile</item>
+    <item name="tvTitle" type="id">Title</item>
+    <item name="etVideoName" type="id">etVideoName</item>
+    <item name="etVideoDescription" type="id">etVideoDescription</item>
+    <item name="flUploadArea" type="id">flUploadArea</item>
+    <item name="btnUpload" type="id">btnUpload</item>
+    <item name="btnDiscard" type="id">btnDiscard</item>
+</resources>

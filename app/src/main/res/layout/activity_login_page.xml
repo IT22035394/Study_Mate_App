@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_welcome_gradient"
+    android:padding="24dp"
+    tools:context=".LoginActivity">
+
+    <!-- Logo / Icon at top -->
+
+    <!-- Student ID input -->
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="135dp"
+        android:layout_height="98dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginEnd="121dp"
+        android:contentDescription="@string/app_logo"
+        android:gravity="center"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/inputStudentID"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_input_field"
+        android:hint="@string/student_id"
+        android:fontFamily="@font/kulim_park_bold"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb"
+        android:inputType="text" />
+
+    <!-- Password input -->
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@id/inputStudentID"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_input_field"
+        android:hint="@string/password"
+        android:fontFamily="@font/kulim_park_bold"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb"
+        android:inputType="textPassword" />
+
+    <!-- Login button -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/inputPassword"
+        android:layout_marginTop="24dp"
+        app:cornerRadius="15dp"
+        android:backgroundTint="#00C4FF"
+        android:text="@string/login"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:fontFamily="@font/kulim_park_semibold" />
+
+    <!-- Sign up link -->
+    <TextView
+        android:id="@+id/txtSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/don_t_have_account_sign_up"
+        android:textColor="#dbdbdb"
+        android:textSize="14sp"
+        android:fontFamily="@font/kulim_park_light" />
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:theme="@style/CustomFontTheme"
+    android:background="@drawable/bg_welcome_gradient"
+    android:padding="24dp"
+    tools:context=".SignUpActivity">
+
+    <!-- Header image or logo -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="135dp"
+        android:layout_height="98dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="121dp"
+        android:contentDescription="@string/app_logo"
+        android:gravity="center"
+        android:src="@drawable/logo" />
+
+    <!-- Input fields -->
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="match_parent"
+        android:layout_marginTop="24dp"
+        android:hint="First Name"
+        android:padding="16dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/logo"
+        android:background="@drawable/bg_input_field"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Last Name"
+        android:padding="16dp"
+
+        android:background="@drawable/bg_input_field"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+
+        android:background="@drawable/bg_input_field"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:padding="16dp"
+        android:background="@drawable/bg_input_field"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:background="@drawable/bg_input_field"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:background="@drawable/bg_input_field"
+        android:textColor="@android:color/white"
+        android:textColorHint="#dbdbdb" />
+
+    <!-- Sign Up button -->
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Sign Up"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        android:backgroundTint="#00C4FF"
+        android:fontFamily="@font/kulim_park_semibold"/>
+
+    <!-- Already have account -->
+    <TextView
+        android:id="@+id/alreadyAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Already have an account? Login"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

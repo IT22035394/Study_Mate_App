@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_welcome_gradient">
+
+    <!-- First selection card : STUDENT -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardStudent"
+        android:layout_width="203dp"
+        android:layout_height="204dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="104dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="14dp"
+        android:gravity="center"
+        app:strokeColor="@drawable/stroke_grad_cyan"
+        app:strokeWidth="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- Replace ic_student with your vector/PNG -->
+            <ImageView
+                android:id="@+id/iconStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="89dp"
+                android:gravity="center"
+                android:src="@drawable/student_1"
+                android:tint="@android:color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtStudent"
+        android:layout_below="@id/cardStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="STUDENT"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:fontFamily="@font/kulim_park_semibold" />
+
+    <!-- Second selection card : TEACHER -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTeacher"
+        android:layout_width="202dp"
+        android:layout_height="204dp"
+        android:layout_below="@id/txtStudent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="103dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="14dp"
+        app:strokeColor="@drawable/stroke_grad_cyan_reverse"
+        app:strokeWidth="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- Replace ic_teacher with your vector/PNG -->
+            <ImageView
+                android:id="@+id/iconTeacher"
+                android:layout_width="wrap_content"
+                android:layout_height="87dp"
+                android:src="@drawable/teacher_1"
+                android:tint="@android:color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardTeacher"
+        android:layout_alignStart="@+id/cardTeacher"
+        android:layout_alignEnd="@+id/cardTeacher"
+        android:layout_marginStart="-106dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-102dp"
+        android:fontFamily="@font/kulim_park_semibold"
+        android:gravity="center"
+        android:text="TEACHER"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+</RelativeLayout>

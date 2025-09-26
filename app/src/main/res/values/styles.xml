@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="InputField">InputField</style>
+
+    <style name="RoleRadio">RoleRadio</style>
+
+    <style name="CustomFontTheme">
+        <item name="android:fontFamily">@font/kulim_park_semibold</item>
+    </style>
+
+    <!-- App Theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/kulim_park_semibold</item>
+    </style>
+
+    <!-- Reusable Text Appearance -->
+    <style name="AppText">
+        <item name="android:fontFamily">@font/kulim_park_semibold</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+
+    <style name="TopCornersRounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">46dp</item>
+        <item name="cornerSizeTopRight">46dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+</resources>
+
