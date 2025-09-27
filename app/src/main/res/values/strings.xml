@@ -10,4 +10,5 @@
     <string name="don_t_have_account_sign_up">Don’t have account? Sign Up</string>
     <string name="first_name">First Name</string>
     <string name="profile">Profile</string>
+    <string name="username">Username\n</string>
 </resources>

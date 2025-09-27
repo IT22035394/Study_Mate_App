@@ -12,4 +12,5 @@
     <item name="flUploadArea" type="id">flUploadArea</item>
     <item name="btnUpload" type="id">btnUpload</item>
     <item name="btnDiscard" type="id">btnDiscard</item>
+    <item name="loginErrorMessage" type="id">LoginError</item>
 </resources>

@@ -131,8 +131,8 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
 
-
             <!-- Vertical ScrollView for Videos -->
+
             <ScrollView
                 android:id="@+id/videos_scroll"
                 android:layout_width="0dp"
@@ -144,151 +144,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
+                <!-- Empty container; items will be added dynamically -->
                 <LinearLayout
                     android:id="@+id/videos_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="16dp">
-
-                    <!-- Video Thumbnail Items -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="8dp"
-                        tools:ignore="ExtraText">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_video_placeholder"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Video Title 1"
-                            android:textColor="#000"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/kulim_park_bold"
-                            android:layout_marginStart="16dp"
-                            android:layout_gravity="center_vertical"/>
-
-                        <!-- Update Button -->
-                        <ImageButton
-                            android:id="@+id/update_video_button1"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="70dp"
-                            android:background="?android:attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Update Video"
-                            android:src="@drawable/edit_24px" />
-
-                        <!-- Delete Button -->
-                        <ImageButton
-                            android:id="@+id/delete_video_button1"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="10dp"
-                            android:background="?android:attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Delete Video"
-                            android:src="@drawable/ic_delete" />
-
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_video_placeholder"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Video Title 2"
-                            android:fontFamily="@font/kulim_park_bold"
-                            android:textColor="#000"
-                            android:textSize="16sp"
-                            android:layout_marginStart="16dp"
-                            android:layout_gravity="center_vertical"/>
-
-                        <!-- Update Button -->
-                        <ImageButton
-                            android:id="@+id/update_video_button2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="70dp"
-                            android:background="?android:attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Update Video"
-                            android:src="@drawable/edit_24px" />
-
-                        <!-- Delete Button -->
-                        <ImageButton
-                            android:id="@+id/delete_video_button2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="10dp"
-                            android:background="?android:attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Delete Video"
-                            android:src="@drawable/ic_delete" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_video_placeholder"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Video Title 3"
-                            android:textColor="#000"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/kulim_park_bold"
-                            android:layout_marginStart="16dp"
-                            android:layout_gravity="center_vertical"/>
-
-                        <!-- Update Button -->
-                        <ImageButton
-                            android:id="@+id/update_video_button3"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="70dp"
-                            android:background="?android:attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Update Video"
-                            android:src="@drawable/edit_24px" />
-
-                        <!-- Delete Button -->
-                        <ImageButton
-                            android:id="@+id/delete_video_button3"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="10dp"
-                            android:background="?android:attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Delete Video"
-                            android:src="@drawable/ic_delete" />
-                    </LinearLayout>
-
-                    <!-- Add more video items dynamically in Kotlin -->
-
-                </LinearLayout>
+                    android:paddingBottom="16dp"/>
             </ScrollView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

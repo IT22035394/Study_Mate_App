@@ -9,7 +9,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
 
-            <!-- Welcome page: make this the launcher -->
+            <!-- Welcome page: the launcher -->
             <activity android:name=".WelcomePageActivity"
                 android:exported="true">
                 <intent-filter>
@@ -20,6 +20,23 @@
 
             <!-- Destination page -->
             <activity android:name=".StudentTeacherSelectionActivity" />
+
+            <!-- sign-up screen -->
+            <activity android:name=".SignUpActivity" />
+
+            <!-- login screen -->
+            <activity android:name=".LoginActivity" />
+
+            <!-- home page -->
+            <activity android:name=".HomeActivity" />
+
+        <!-- teacher's profile page -->
+        <activity android:name=".TeacherProfileActivity" />
+
+
+        <!-- video upload page -->
+        <activity android:name=".UploadVideoActivity" />
+
 
     </application>
 

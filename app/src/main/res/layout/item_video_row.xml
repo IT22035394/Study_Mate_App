@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <!-- Thumbnail or placeholder -->
+    <VideoView
+        android:id="@+id/videoThumb"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/ic_video_placeholder"
+        android:scaleType="centerCrop" />
+
+    <!-- Title and description -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/videoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video Title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/videoDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short description"
+            android:textSize="14sp"
+            android:textColor="#666" />
+    </LinearLayout>
+
+    <!-- Edit Button -->
+    <ImageButton
+        android:id="@+id/btnEditVideo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/edit_24px"
+        android:contentDescription="Edit Video" />
+
+    <!-- Delete Button -->
+    <ImageButton
+        android:id="@+id/btnDeleteVideo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="Delete Video" />
+</LinearLayout>
