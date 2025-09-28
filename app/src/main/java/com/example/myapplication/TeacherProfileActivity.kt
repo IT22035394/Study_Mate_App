@@ -1,14 +1,11 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.VideoView
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -47,15 +44,17 @@ class TeacherProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if ((requestCode == 200 || requestCode == 201) && resultCode == RESULT_OK) {
-            loadVideos() // refresh after upload or edit
+        if ((requestCode == 200 || requestCode == 201) && resultCode == Activity.RESULT_OK) {
+            loadVideos()
         }
     }
 
-    // --- Updated loadVideos with Edit + Delete ---
+    /** Load all videos dynamically */
     private fun loadVideos() {
         container.removeAllViews()
         val videos = db.getAllVideos()
+
+        // update video count text
         findViewById<TextView>(R.id.videos_count).text = "${videos.size} Videos"
 
         for (video in videos) {
@@ -67,19 +66,39 @@ class TeacherProfileActivity : AppCompatActivity() {
             val btnEdit = itemView.findViewById<ImageButton>(R.id.btnEditVideo)
             val btnDelete = itemView.findViewById<ImageButton>(R.id.btnDeleteVideo)
 
-            title.text = video["video_name"]
-            desc.text = video["video_description"]
+            val videoName = video["video_name"] ?: "Untitled"
+            val videoDesc = video["video_description"] ?: ""
+            val videoUriString = video["video_uri"]
 
-            videoView.setVideoURI(Uri.parse(video["video_uri"]))
-            videoView.seekTo(100) // show preview frame
+            title.text = videoName
+            desc.text = videoDesc
+
+            if (videoUriString != null) {
+                try {
+                    val uri = Uri.parse(videoUriString)
+                    videoView.setVideoURI(uri)
+                    videoView.seekTo(1) // just load first frame
+                    // Click → open VideoPlayerActivity with ExoPlayer
+                    itemView.setOnClickListener {
+                        val intent = Intent(this, VideoPlayerActivity::class.java).apply {
+                            putExtra("video_uri", uri.toString())
+                            putExtra("video_name", videoName)
+                        }
+                        startActivity(intent)
+                    }
+                } catch (e: Exception) {
+                    Log.e("TeacherProfile", "Invalid video URI: $videoUriString", e)
+                    Toast.makeText(this, "Invalid video for $videoName", Toast.LENGTH_SHORT).show()
+                }
+            }
 
             // --- Edit button ---
             btnEdit.setOnClickListener {
                 val intent = Intent(this, EditVideoActivity::class.java).apply {
-                    putExtra("video_id", video["video_id"])
-                    putExtra("video_name", video["video_name"])
-                    putExtra("video_desc", video["video_description"])
-                    putExtra("video_uri", video["video_uri"])
+                    putExtra("video_id", video["video_id"]?.toInt() ?: -1)
+                    putExtra("video_name", videoName)
+                    putExtra("video_desc", videoDesc)
+                    putExtra("video_uri", videoUriString)
                 }
                 startActivityForResult(intent, 201)
             }
@@ -90,6 +109,8 @@ class TeacherProfileActivity : AppCompatActivity() {
                 if (deleted) {
                     Toast.makeText(this, "Video deleted", Toast.LENGTH_SHORT).show()
                     loadVideos()
+                } else {
+                    Toast.makeText(this, "Failed to delete video", Toast.LENGTH_SHORT).show()
                 }
             }
 

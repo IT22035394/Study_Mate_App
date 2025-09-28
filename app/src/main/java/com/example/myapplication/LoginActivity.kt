@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.app.Activity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RelativeLayout
@@ -25,48 +24,51 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin       = findViewById<Button>(R.id.btnLogin)
         val txtSignUp      = findViewById<TextView>(R.id.txtSignUp)
 
-        // navigate back to SignUp screen if they don't have an account
+        // Navigate to SignUp screen if user clicks
         txtSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
 
+        // Login button click
         btnLogin.setOnClickListener {
-            val firstName = inputStudentID.text.toString().trim()
+            val studentId = inputStudentID.text.toString().trim()
             val password  = inputPassword.text.toString().trim()
 
-            if (firstName.isEmpty() || password.isEmpty()) {
+            if (studentId.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please enter both fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val userExists = dbHelper.checkUser(firstName, password)
+            // ✅ Check DB for existing user
+            val userExists = dbHelper.checkUser(studentId, password)
 
             if (userExists) {
+                // ✅ Login successful → go to Home
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                // Redirect to HomeActivity
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("FIRST_NAME", firstName)
+                val intent = Intent(this, HomeActivity::class.java).apply {
+                    putExtra("FIRST_NAME", studentId)
+                }
                 startActivity(intent)
                 finish()
             } else {
-                // Show a small inline message
-                showErrorBelowForm()
+                // ✅ No such user in DB
+                showErrorMessage("Login unsuccessful. Please sign up first.")
             }
         }
     }
 
-    private fun showErrorBelowForm() {
-        // You can either add a TextView dynamically or show a Toast.
-        // Here we’ll add a small TextView at the bottom for clarity.
+    // Function to show error message below the form
+    private fun showErrorMessage(message: String) {
+        val rootLayout = findViewById<RelativeLayout>(R.id.rootLayout)
+        var errorText = findViewById<TextView>(R.id.loginErrorMessage)
 
-        val errorText = findViewById<TextView?>(R.id.loginErrorMessage)
         if (errorText == null) {
-            val rootLayout = findViewById<android.widget.RelativeLayout>(R.id.rootLayout)
-            val tv = TextView(this).apply {
+            // Create error TextView if not already present
+            errorText = TextView(this).apply {
                 id = R.id.loginErrorMessage
-                text = "Login unsuccessful. Please sign up first."
                 setTextColor(resources.getColor(android.R.color.holo_red_light))
                 textSize = 14f
+                text = message
                 val params = RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT
@@ -77,7 +79,10 @@ class LoginActivity : AppCompatActivity() {
                 }
                 layoutParams = params
             }
-            rootLayout.addView(tv)
+            rootLayout.addView(errorText)
+        } else {
+            // If already present, just update text
+            errorText.text = message
         }
     }
 }

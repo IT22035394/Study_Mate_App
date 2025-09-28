@@ -30,14 +30,24 @@
             <!-- home page -->
             <activity android:name=".HomeActivity" />
 
-        <!-- teacher's profile page -->
-        <activity android:name=".TeacherProfileActivity" />
+            <!-- teacher's profile page -->
+            <activity android:name=".TeacherProfileActivity" />
 
+            <!-- video upload page -->
+            <activity android:name=".UploadVideoActivity"
+            android:exported="true" />
 
-        <!-- video upload page -->
-        <activity android:name=".UploadVideoActivity" />
+        <!-- video edit page -->
+            <activity android:name=".EditVideoActivity" />
 
+        <activity android:name=".VideoPlayerActivity"
+            android:exported="true" />
 
     </application>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+
 
 </manifest>

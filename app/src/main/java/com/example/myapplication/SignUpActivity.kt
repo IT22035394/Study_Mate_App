@@ -1,10 +1,10 @@
 package com.example.myapplication
 
 import android.content.Intent
-import android.app.Activity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -25,9 +25,10 @@ class SignUpActivity : AppCompatActivity() {
         val password  = findViewById<EditText>(R.id.password)
         val confirm   = findViewById<EditText>(R.id.confirmPassword)
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
+        val alreadyAccount = findViewById<TextView>(R.id.alreadyAccount)
 
+        // --- Sign Up Button ---
         btnSignUp.setOnClickListener {
-
             val fName = firstName.text.toString().trim()
             val lName = lastName.text.toString().trim()
             val eMail = email.text.toString().trim()
@@ -35,9 +36,9 @@ class SignUpActivity : AppCompatActivity() {
             val pass  = password.text.toString().trim()
             val cPass = confirm.text.toString().trim()
 
-            // Basic validation
-            if (fName.isEmpty() || lName.isEmpty() || eMail.isEmpty()
-                || pNum.isEmpty() || pass.isEmpty() || cPass.isEmpty()
+            // Validation
+            if (fName.isEmpty() || lName.isEmpty() || eMail.isEmpty() ||
+                pNum.isEmpty() || pass.isEmpty() || cPass.isEmpty()
             ) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -48,20 +49,25 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Insert into database
+            // Insert user into DB
             val inserted = dbHelper.insertUser(fName, lName, eMail, pNum, pass)
 
             if (inserted) {
                 Toast.makeText(this, "Sign-Up successful. Please log in.", Toast.LENGTH_SHORT).show()
-
-                // Navigate to LoginActivity
+                // Go to Login page
                 val intent = Intent(this, LoginActivity::class.java)
-                // optional: clear the sign-up screen from back stack
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Error saving user. Try again.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        // --- "Already have an account? Login" ---
+        alreadyAccount.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

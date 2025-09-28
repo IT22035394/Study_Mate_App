@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -42,7 +39,7 @@ class UploadVideoActivity : AppCompatActivity() {
 
         // Back arrow → TeacherProfileActivity
         findViewById<ImageView>(R.id.ivProfile).setOnClickListener {
-            finish() // just close and return
+            finish()
         }
 
         // Bottom Navigation
@@ -63,10 +60,11 @@ class UploadVideoActivity : AppCompatActivity() {
 
         // Choose video
         btnChoose.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
                 type = "video/*"
             }
-            startActivityForResult(Intent.createChooser(intent, "Select Video"), PICK_VIDEO_REQUEST)
+            startActivityForResult(intent, PICK_VIDEO_REQUEST)
         }
 
         // Upload video
@@ -80,21 +78,17 @@ class UploadVideoActivity : AppCompatActivity() {
                 val success = dbHelper.insertVideo(name, desc, selectedVideoUri.toString())
                 if (success) {
                     Snackbar.make(btnUpload, "Video uploaded successfully!", Snackbar.LENGTH_SHORT).show()
-                    setResult(Activity.RESULT_OK) // tell TeacherProfileActivity to refresh
-                    finish() // go back
+                    setResult(Activity.RESULT_OK)
+                    finish()
                 } else {
                     Toast.makeText(this, "Failed to upload video", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            setResult(Activity.RESULT_OK)
-            finish()
-
         }
 
-        // Discard video → back to profile
+        // Discard video
         btnDiscard.setOnClickListener {
-            finish() // just close without saving
+            finish()
         }
     }
 
@@ -102,8 +96,17 @@ class UploadVideoActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_VIDEO_REQUEST && resultCode == Activity.RESULT_OK) {
             selectedVideoUri = data?.data
-            selectedVideoUri?.let {
-                Toast.makeText(this, "Video selected", Toast.LENGTH_SHORT).show()
+            selectedVideoUri?.let { uri ->
+                // take persistable permission so we can use this URI later
+                try {
+                    contentResolver.takePersistableUriPermission(
+                        uri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                Toast.makeText(this, "Video selected!", Toast.LENGTH_SHORT).show()
             }
         }
     }

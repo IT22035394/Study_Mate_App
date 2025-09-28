@@ -40,12 +40,19 @@ class EditVideoActivity : AppCompatActivity() {
         btnSave = findViewById(R.id.btnUploadVideo)
         btnDiscard = findViewById(R.id.btnDiscardVideo)
 
-        // Get extras from TeacherProfileActivity
-        videoId = intent.getStringExtra("video_id")?.toInt() ?: -1
+        // --- Get data from TeacherProfileActivity
+        videoId = intent.getIntExtra("video_id", -1)
         val videoName = intent.getStringExtra("video_name") ?: ""
         val videoDesc = intent.getStringExtra("video_desc") ?: ""
         val videoUri = intent.getStringExtra("video_uri")
 
+        if (videoId == -1) {
+            Toast.makeText(this, "Invalid video ID", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        // Pre-fill fields
         etVideoName.setText(videoName)
         etVideoDesc.setText(videoDesc)
         if (videoUri != null) selectedVideoUri = Uri.parse(videoUri)
@@ -67,8 +74,8 @@ class EditVideoActivity : AppCompatActivity() {
                 val success = dbHelper.updateVideo(videoId, name, desc, selectedVideoUri.toString())
                 if (success) {
                     Toast.makeText(this, "Video updated successfully!", Toast.LENGTH_SHORT).show()
-                    setResult(Activity.RESULT_OK)
-                    finish() // back to TeacherProfile
+                    setResult(Activity.RESULT_OK) // TeacherProfileActivity will refresh
+                    finish()
                 } else {
                     Toast.makeText(this, "Failed to update video", Toast.LENGTH_SHORT).show()
                 }
@@ -78,7 +85,7 @@ class EditVideoActivity : AppCompatActivity() {
         // --- Discard Changes
         btnDiscard.setOnClickListener {
             setResult(Activity.RESULT_CANCELED)
-            finish() // back to TeacherProfile without changes
+            finish()
         }
 
         // --- Back arrow
@@ -96,7 +103,8 @@ class EditVideoActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_profile -> {
-                    startActivity(Intent(this, TeacherProfileActivity::class.java))
+                    // just go back instead of stacking multiple
+                    finish()
                     true
                 }
                 else -> false

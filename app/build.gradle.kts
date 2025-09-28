@@ -44,6 +44,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+    implementation("com.google.android.exoplayer:exoplayer-ui:2.19.1")
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)

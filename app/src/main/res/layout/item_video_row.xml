@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:paddingBottom="20dp"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_input_field">
 
-    <!-- Thumbnail or placeholder -->
+    <!-- Video preview -->
     <VideoView
         android:id="@+id/videoThumb"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="100dp"
         android:layout_gravity="center_vertical"
         android:background="@drawable/ic_video_placeholder"
-        android:scaleType="centerCrop" />
+        android:focusable="false"
+        android:clickable="false" />
 
-    <!-- Title and description -->
+    <!-- Title + Description -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,34 +33,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Video Title"
-            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#000" />
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/videoDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Short description"
+            android:text="Video description here..."
             android:textSize="14sp"
-            android:textColor="#666" />
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 
-    <!-- Edit Button -->
+    <!-- Action Buttons -->
     <ImageButton
         android:id="@+id/btnEditVideo"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Edit Video"
         android:src="@drawable/edit_24px"
-        android:contentDescription="Edit Video" />
+        app:tint="@android:color/black"
+        android:layout_marginEnd="8dp" />
 
-    <!-- Delete Button -->
     <ImageButton
         android:id="@+id/btnDeleteVideo"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete Video"
         android:src="@drawable/ic_delete"
-        android:contentDescription="Delete Video" />
+        app:tint="@android:color/black" />
+
 </LinearLayout>
