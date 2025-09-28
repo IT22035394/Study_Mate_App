@@ -32,15 +32,19 @@ class DBHelper(context: Context) :
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        // Users table
-        val createUsersTable = ("CREATE TABLE $TABLE_USERS (" +
-                "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$COL_FIRST TEXT," +
-                "$COL_LAST TEXT," +
-                "$COL_EMAIL TEXT," +
-                "$COL_PHONE TEXT," +
-                "$COL_PASSWORD TEXT)")
+        // Users table with constraints
+        val createUsersTable = """
+            CREATE TABLE $TABLE_USERS (
+                $COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COL_FIRST TEXT NOT NULL,
+                $COL_LAST TEXT NOT NULL,
+                $COL_EMAIL TEXT NOT NULL UNIQUE,
+                $COL_PHONE TEXT UNIQUE,
+                $COL_PASSWORD TEXT NOT NULL
+            );
+        """.trimIndent()
         db?.execSQL(createUsersTable)
+
 
         // Videos table
         val createVideosTable = ("CREATE TABLE $TABLE_VIDEOS (" +
